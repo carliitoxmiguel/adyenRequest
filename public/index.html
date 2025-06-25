@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba Adyen Node.js</title>
+    <style>
+        body { font-family: sans-serif; margin: 20px; background-color: #f4f4f4; }
+        .container { background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        label { display: block; margin-bottom: 8px; font-weight: bold; }
+        input[type="text"], input[type="number"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover { background-color: #0056b3; }
+        pre {
+            background-color: #eee;
+            padding: 15px;
+            border-radius: 4px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            border: 1px solid #ccc;
+        }
+        .error { color: red; font-weight: bold; }
+        .success { color: green; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Prueba de Integración Adyen con Node.js</h1>
+        <form id="paymentForm">
+            <div>
+                <label for="holderName">Nombre del Titular (Opcional):</label>
+                <input type="text" id="holderName" name="holderName" value="J Doe">
+            </div>
+            <div>
+                <label for="cardNumber">Número de Tarjeta:</label>
+                <input type="text" id="cardNumber" name="cardNumber" required value="4111111111111111">
+            </div>
+            <div>
+                <label for="expiryMonth">Mes de Expiración (MM):</label>
+                <input type="text" id="expiryMonth" name="expiryMonth" required value="12">
+            </div>
+            <div>
+                <label for="expiryYear">Año de Expiración (YYYY):</label>
+                <input type="text" id="expiryYear" name="expiryYear" required value="2030">
+            </div>
+            <div>
+                <label for="cvc">CVC/CVV:</label>
+                <input type="text" id="cvc" name="cvc" required value="123">
+            </div>
+            <button type="submit">Pagar (Probar Encriptación)</button>
+        </form>
+
+        <h2>Respuesta del Servidor:</h2>
+        <pre id="responseOutput">Presiona "Pagar" para enviar la solicitud...</pre>
+    </div>
+
+    <script>
+        const form = document.getElementById('paymentForm');
+        const responseOutput = document.getElementById('responseOutput');
+
+        form.addEventListener('submit', async function(event) {
+            event.preventDefault();
+            responseOutput.textContent = 'Procesando...';
+            responseOutput.className = '';
+
+            const formData = new FormData(form);
+            const data = {
+                holderName: formData.get('holderName'),
+                cardNumber: formData.get('cardNumber').replace(/\s+/g, ''), // Eliminar espacios
+                expiryMonth: formData.get('expiryMonth'),
+                expiryYear: formData.get('expiryYear'),
+                cvc: formData.get('cvc')
+            };
+
+            try {
+                const response = await fetch('/initiatePayment', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                const responseData = await response.json();
+
+                if (response.ok) {
+                    responseOutput.className = 'success';
+                } else {
+                    responseOutput.className = 'error';
+                }
+                responseOutput.textContent = JSON.stringify(responseData, null, 2);
+
+            } catch (error) {
+                console.error('Error en la solicitud fetch:', error);
+                responseOutput.className = 'error';
+                responseOutput.textContent = 'Error en la solicitud al servidor: \n' + error.message;
+            }
+        });
+    </script>
+</body>
+</html>
