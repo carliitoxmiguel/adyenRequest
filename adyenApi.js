@@ -8826,6 +8826,17 @@
             }, 5000);
 
             // Señal de que Adyen API está lista
+            // Asegurarse de que este bloque esté al final y se ejecute después de la inicialización de adyen.key y adyen.generationTime
+            if (typeof window.adyen !== 'undefined' && window.adyen.key && window.adyen.generationTime) {
+                console.log("adyenApi.js (re-apply): Adyen key and generationTime are set. Dispatching adyenApiReady event.");
+                document.dispatchEvent(new CustomEvent('adyenApiReady', { detail: { status: 'ready' } }));
+            } else {
+                console.error("adyenApi.js (re-apply): Adyen key or generationTime not set after script execution. Cannot dispatch adyenApiReady event.");
+                // Opcionalmente, intentar despachar un evento de 'error' o reintentar
+                document.dispatchEvent(new CustomEvent('adyenApiFailed', { detail: { status: 'error', message: 'Key or generationTime missing' } }));
+            }
+
+            // Señal de que Adyen API está lista
             if (window.adyen && window.adyen.key && window.adyen.generationTime) {
                 console.log("adyenApi.js: Adyen key and generationTime are set. Dispatching adyenApiReady event.");
                 document.dispatchEvent(new CustomEvent('adyenApiReady'));
