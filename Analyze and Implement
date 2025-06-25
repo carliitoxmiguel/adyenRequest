@@ -1,0 +1,1283 @@
+Para implementar
+
+fetch("https://www.petsuppliesplus.com/api/adyen/initiatePayment", {
+  "headers": {
+    "accept": "application/json, text/plain, */*",
+    "accept-language": "en-US,en;q=0.9",
+    "content-type": "application/json",
+    "priority": "u=1, i",
+    "sec-ch-ua": "\"Google Chrome\";v=\"137\", \"Chromium\";v=\"137\", \"Not/A)Brand\";v=\"24\"",
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": "\"Windows\"",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "same-origin"
+  },
+  "referrer": "https://www.petsuppliesplus.com/checkout",
+  "referrerPolicy": "strict-origin-when-cross-origin",
+  "body": "{\"riskData\":{\"clientData\":\"eyJ2ZXJzaW9uIjoiMS4wLjAiLCJkZXZpY2VGaW5nZXJwcmludCI6IkRwcXdVNHpFZE4wMDUwMDAwMDAwMDAwMDAwTGxEeVo0OW5qRDAwNTAyNzE1NzZjVkI5NGlLekJHREdiR3RVS0o5TUJpeDdSWDNhejgwMDJEYUJraW5kOU1sMDAwMDBxWmtURTAwMDAwZzRhVU5vWTM5b0RXdDlvd0xtRUk6NDAiLCJwZXJzaXN0ZW50Q29va2llIjpbIl9ycF91aWQ9MTFjMzIzOGUtNjFhNS0xOTllLTE1NWEtNmRkNDA4ZWU3NWNkIl0sImNvbXBvbmVudHMiOnsidXNlckFnZW50IjoiNmIzYjhlOTI3NTMxYzhmMmE4M2MyYmM4YWU1ODkzYjgiLCJ3ZWJkcml2ZXIiOjAsImxhbmd1YWdlIjoiZW4tVVMiLCJjb2xvckRlcHRoIjoyNCwiZGV2aWNlTWVtb3J5Ijo0LCJwaXhlbFJhdGlvIjoxLCJoYXJkd2FyZUNvbmN1cnJlbmN5Ijo0LCJzY3JlZW5XaWR0aCI6MTkyMCwic2NyZWVuSGVpZ2h0IjoxMDgwLCJhdmFpbGFibGVTY3JlZW5XaWR0aCI6MTkyMCwiYXZhaWxhYmxlU2NyZWVuSGVpZ2h0IjoxMDQwLCJ0aW1lem9uZU9mZnNldCI6MzAwLCJ0aW1lem9uZSI6IkFtZXJpY2EvQ2hpY2FnbyIsInNlc3Npb25TdG9yYWdlIjoxLCJsb2NhbFN0b3JhZ2UiOjEsImluZGV4ZWREYiI6MSwiYWRkQmVoYXZpb3IiOjAsIm9wZW5EYXRhYmFzZSI6MCwicGxhdGZvcm0iOiJXaW4zMiIsInBsdWdpbnMiOiIyOWNmNzFlM2Q4MWQ3NGQ0M2E1YjBlYjc5NDA1YmE4NyIsImNhbnZhcyI6IjllMDRjMDFjYjQ3ZTA0ZDk0OTJlNjAwYTQ4MThlYzFmIiwid2ViZ2wiOiI4M2ZhOGU2NmY2Y2VkOTE3N2UxYWNiOTE1MDdjNWY2YiIsIndlYmdsVmVuZG9yQW5kUmVuZGVyZXIiOiJHb29nbGUgSW5jLiAoSW50ZWwpfkFOR0xFIChJbnRlbCwgSW50ZWwoUikgSEQgR3JhcGhpY3MgNjIwICgweDAwMDA1OTE2KSBEaXJlY3QzRDExIHZzXzVfMCBwc181XzAsIEQzRDExKSIsImFkQmxvY2siOjAsImhhc0xpZWRMYW5ndWFnZXMiOjAsImhhc0xpZWRSZXNvbHV0aW9uIjowLCJoYXNMaWVkT3MiOjAsImhhc0xpZWRCcm93c2VyIjowLCJmb250cyI6ImNkNDZiMDFlZjFiYjQ2MGFjMWQzNzRhM2FmYmU5YjBlIiwiYXVkaW8iOiI5MDJmMGZlOTg3MTliNzc5ZWEzN2YyNzUyOGRmYjBhYSIsImVudW1lcmF0ZURldmljZXMiOiI1ZjNmZGFmNDc0M2VhYTcwN2NhNmI3ZGE2NTYwMzg5MiIsInZpc2l0ZWRQYWdlcyI6W10sImJhdHRlcnlJbmZvIjp7ImJhdHRlcnlMZXZlbCI6MTAwLCJiYXR0ZXJ5Q2hhcmdpbmciOnRydWV9LCJib3REZXRlY3RvcnMiOnsid2ViRHJpdmVyIjpmYWxzZSwiY29va2llRW5hYmxlZCI6dHJ1ZSwiaGVhZGxlc3NCcm93c2VyIjpmYWxzZSwibm9MYW5ndWFnZXMiOmZhbHNlLCJpbmNvbnNpc3RlbnRFdmFsIjpmYWxzZSwiaW5jb25zaXN0ZW50UGVybWlzc2lvbnMiOmZhbHNlLCJkb21NYW5pcHVsYXRpb24iOmZhbHNlLCJhcHBWZXJzaW9uU3VzcGljaW91cyI6ZmFsc2UsImZ1bmN0aW9uQmluZFN1c3BpY2lvdXMiOnRydWUsImJvdEluVXNlckFnZW50IjpmYWxzZSwid2luZG93U2l6ZVN1c3BpY2lvdXMiOmZhbHNlLCJib3RJbldpbmRvd0V4dGVybmFsIjpmYWxzZSwid2ViR0wiOmZhbHNlfX19\"},\"paymentMethod\":{\"type\":\"scheme\",\"holderName\":\"\",\"encryptedSecurityCode\":\"eyJhbGciOiJSU0EtT0FFUCIsImVuYyI6IkEyNTZDQkMtSFM1MTIiLCJ2ZXJzaW9uIjoiMSJ9.pdmnUuALRHBHaHm3IlvHQrchyJxYdqhgdXLWCx3E_lrdXiuemBbPt_1V_HJ9BqQ5NgohWRivKytIE3VgGDGna5efiCN23Ujp2w1KrhGyqHhUe7nhLB6sZqCDqcI8sDqIyTuo2EalyRc39-FAZA6jNWkVZrLUif81JBZ3TUcC9I-w3NWlfRKs9iaAyTnF_2V2S0bh6GCkGXUSpH9tuNTyoFMBdd5s2J0xGznj4wALzlHKogz1KQ1fFSpArcLsGJP-fHE207PRFMPfhby6JupMqHW8qSP1tRylch9HsVivprpykwqhb0kOJJWSJG0INmr0_eLvOXPAQCTEb7ZNluQV3g.PyeWc1pmZi_7Bdklkz2RWA.fSrfbZglLJrmL2QcnIqEQtVxZ3anNzqRkCl9hjo4fyOywea48PzWkTmYHvciKdiVxxg82_QSKwm3CjznkCfQQusCpBoWUPVwRxrhd_ZmhyPHanTSQ8LqLfd20ukqE4pEM8pjMEubJzZizmUTNsGI3Y-eKWPndQziyM8ohohiMFq66bE9wwG2mCuHSNmtUW5TBghPQ9OYFAJwFPXWw6ejknl_9de_ix7QacDKMrqbO9M7pZrh72LBIgpID1VSJaz1fVLj_GFFt2WnbNl4IlaJ07l9yv56WavR8bnJlBR71m-IDwveGbFEBOzvqbFu2TG9HxoXuJTslIXEpTNgDHN7sLpR-mkOkgrBru70PJvNTQ2jsMOE_SDiHlashaD6St8xrv49ExKoovLc4zMRk6441AXOGE_gxaO8HzECG_iMF5bLRCj2U3wqj33aqk1bdklfkbNwqdIzFUJZAQ1ccLLF2WeNxFO3V7p8eHxnNyZL8kH3EOajFgM2glbLHY6aZ1nb-VLvslLkeDY1tmywE717MufVhYvaXG5mWJNdT-niwCLhXM4C_bDr0U2_zWNebjKcqgbAhyZZEQcggHm4ubD6prIPDGH8DDFvcc9yeAqPoA_NWqiM1Os28CVNCBimmL0O.71D9fMk2iCZH7YVqXbhKxKAaqVtBAtkmEvjQomubDPg\",\"encryptedCardNumber\":\"eyJhbGciOiJSU0EtT0FFUCIsImVuYyI6IkEyNTZDQkMtSFM1MTIiLCJ2ZXJzaW9uIjoiMSJ9.IMFLb3Vbmfj7FO9qMVBddYNiSkucQ2xjHUNgbyxyGyh3ZeekRddHTyAX2o0aVu_wk2y1AsiD1xi8UyasnNN0bOhMiTXE7j34TGtwTd2aX-WYh56fLOLLmefEgtyVIcC6InYDc6dsresHzNPVmx0tRPnMUUOKl0KPzUrwNHxXvy8JzbHNQvatnsqj_MPm9vBkHtBPGPlf-lKPiDfQRw4EY74HA1DEHmvJ2_y0jTrxk2Py0ijOVs3va0k_ukDXGUxLif_Qxhcpi-Ba36DA3qCMYCUNtLsKTBpwQQj_RsO7Bm3e53ncPsUyVYEB3x8A_igoQx-2DorF-gfQGmxnuLRRZQ.JTwdAc88dOw56tg4UTLe3Q.6WqTkOQiglHauQnbDVyTGVgFDPEG5lBehD3k4m0khSECAaKrCZ0g7ZVt4C8sZDJ6DH9mloRW_FV237Arw380EtF7sHW2uNeozGSHtqKT62TlORrEHi6GoRIRcEOAYS9_3Y2h7XTWhVbKFHhS_Zsc_ZfVItlMJ0dZiCe99RkRUutk4CSc2Xg-08WngIaC7Hqnqamx3e8MXfFjXAcpA_cad_KJbUYMLACpJAwuAvTIRz_bgml3-XV1_JF8S-v7tIqK4uD3UgE1mTtmtHkavwK39lJ23HsxNd6k5VH3zDumx2OEYNoC7AYWK8Sydj6rU16J1fApSX9FthJeGIt7dUAvRIQqbm4t3YeEx50-E-uORMWKgqdmWxyMPx0YteX2X31PSkTofZsbF-PyTsRw2wkb0sW7HXG6wcfzl6MmOq6_aiQ61k3h5n3GCGFljhaWlqI9s0khMaryyfUEGYHAxjosabxC0s7eGfP06NA7XfxUqvAgn0AUpdvMVUh1EodgCAlwPJ3G3G7BhIT277_XeUxU0NUoPD4j6fI_nJ692GuJ3K7NQSzaG7lgpnHcbsgg__gHdhYmgkXW5hYWvFYIBGZThh_uNt1FQheNFag37gzVowAf1TTQ_nuYxQpKACyXFSfkrehCBoqnxakXfkpxuGU3lWSeIMv1aJup705kj6RdQ-PBiFLWSvkruiL_e7pLbJ7IJ6R7bhpfgqc199LTJi3QvOdltFfVU7uo2-S7iRcyPpQjSlrm0-LNNzXp7SNlNDMRTIAwDhbfRBPnfdc41LRBHQ.p9hO4ORMBdjwU1PTBNwbc60ngTAH4M-hgDh3PgsvG00\",\"encryptedExpiryMonth\":\"eyJhbGciOiJSU0EtT0FFUCIsImVuYyI6IkEyNTZDQkMtSFM1MTIiLCJ2ZXJzaW9uIjoiMSJ9.B15ZgUpov0W1b6DYicMAcZoUbJ8Qnjw_JFoBt2qk3yHyjrINmYPq96c0VeE_EXNKvhlK6Pchn3uV-FMuxhyBC6WgABxRePL5jsNN7AfED868Rl5z6mVPwfzTG2WvDjh4oeCPxqiJ6S8aMze-C2aVcyiWhXqFByIseCChC2bgAjbaWZeZASpFGG6JvpK3NTbyOPQeUwxYAJNb0vmcUQJvJlwhvSgw8ECiyYbXpgdfng1MRnsz0_J9PoXigc6LKnFfd5NrsjyHOCgj0JUJlyXEeGhed2-nzJr2kkN42uDd7e-NzP8ANJddEuIa3eMAJ4POtfp57orlXppx4qRH9E9How.IPxyYxNmoBql7pEzPKNR-A.R0WX4NqC_LuByftFEWeU0XIvplvqRv3cw1sIGPQZD5QXIo-SSiKSxImTbJYvSf6RZHNrnFmJ-nxgD0Eb6QmS2w.BAp_a9KsLrYPoV0NcILAEQguZmjKzuhuD0bmvxV5Iuc\",\"encryptedExpiryYear\":\"eyJhbGciOiJSU0EtT0FFUCIsImVuYyI6IkEyNTZDQkMtSFM1MTIiLCJ2ZXJzaW9uIjoiMSJ9.bUwENxLE1t6YVz-g52WgMKxYRPpliWuSbMsKGUel_Ovk8GKVKLBf3T_jPM3KLi_jxwyuvvv0KPJeFWuyIO959Ly-MZS616ciLsxUUqBSp4OsldQpdysuMDoeUjL0kUDg_DO2vP3xg_JiFl67pRW9hRJqJ5NCosmVNNwDp1rgoZFbJzvbFNEr9K4zX4-zW4shjry4nv10WdB6EsIywVhSPHV64bY_ls4G-Pn4kNMC49QJw8KKRLhm9EcooyvjEyQHYwZNb3maIqFhqXsB65DC0JPcO96kAPLZAxXb2S3yjv1_Qq7LAye2uhNnWr2o5dZG_v2_PaON-MTEAHHefYemag.qfzyDVLIv9VEnsuRfRLQrQ.rPFcQ0mR2iEWF7lHRPUcplyHliYjnehStMPJdV356TcWyBaWUj-57wyaPpLHSng2fO3OpgPTBg2uAijd4bt2vg.X9VQFoR4l3iQLa6BUKcgZdJGsM33mSWFp5eHfsRnx-Q\",\"brand\":\"visa\",\"checkoutAttemptId\":\"35c4e070-635f-4c40-863a-a120a5f2a45217508487430738F2D94EEF480DD6BB8C9ABA765EA0DCFAA95DC35DEBFB08D513CDFCFDB4E8984\"},\"storePaymentMethod\":false,\"browserInfo\":{\"acceptHeader\":\"*/*\",\"colorDepth\":24,\"language\":\"en-US\",\"javaEnabled\":false,\"screenHeight\":1080,\"screenWidth\":1920,\"userAgent\":\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36\",\"timeZoneOffset\":300},\"origin\":\"https://www.petsuppliesplus.com\",\"clientStateDataIndicator\":true,\"shopperReference\":\"B5EEFB36-7334-4488-93E9-40D2F0115CBB\",\"shopperName\":\"Jaime  Luis\",\"telephoneNumber\":\"3054515444\",\"shopperEmail\":\"milleralonso4@gmail.com\",\"billingAddress\":{\"street\":\"448 arkansas ct\",\"houseNumberOrName\":\"\",\"city\":\"Kissimmee\",\"postalCode\":\"34759\",\"stateOrProvince\":\"AK\",\"country\":\"US\"},\"additionalData\":{\"enhancedSchemeData.shipFromPostalCode\":\"\",\"subMerchantCity\":\"\",\"subMerchantCountry\":\"\",\"subMerchantID\":\"\",\"subMerchantName\":\"\",\"subMerchantPhoneNumber\":\"\",\"subMerchantPostalCode\":\"\",\"subMerchantState\":\"\",\"subMerchantStreet\":\"\"},\"merchantReference\":\"0210-kjlgvmtragm\",\"amount\":{\"currency\":\"USD\",\"value\":0},\"storeId\":\"0210\",\"isAutoship\":false}",
+  "method": "POST",
+  "mode": "cors",
+  "credentials": "include"
+});
+
+
+
+donde se hace la peticion
+
+import { Field, LinkField, Placeholder } from '@sitecore-jss/sitecore-jss-nextjs';
+import { ComponentProps } from 'lib/component-props';
+import { useCallback, useMemo, useState } from 'react';
+import CheckoutPaymentVariant from 'tailwindVariants/components/checkoutPaymentTailwindVariant';
+import clsx from 'clsx';
+import { useTheme } from 'lib/context/ThemeContext';
+import useOcCurrentOrder from '../../../hooks/useOcCurrentOrder';
+import { nanoid } from '@reduxjs/toolkit';
+import { apiRequest } from 'src/utils/apiWrapper';
+import { AdyenClientApiWrapper, ZeroAuthResponse } from 'lib/adyen/client/api-wrapper';
+import { useRef, useEffect, RefObject } from 'react';
+import AdyenCheckout from '@adyen/adyen-web';
+import '@adyen/adyen-web/dist/adyen.css';
+import styles from './styles/CheckoutPayment.module.css';
+import DropinElement from '@adyen/adyen-web/dist/types/components/Dropin/Dropin';
+import { BillingAddress } from '@adyen/api-library/lib/src/typings/checkout/billingAddress';
+import { DeliveryAddress } from '@adyen/api-library/lib/src/typings/checkout/deliveryAddress';
+import useOcAuth from 'src/hooks/useOcAuth';
+import { useCookies } from 'react-cookie';
+import { Tokens } from 'ordercloud-javascript-sdk';
+import { setRecentPlacedOrder } from 'src/redux/ocCurrentOrder';
+import { useOcDispatch, useOcSelector } from 'src/redux/ocStore';
+import { useRouter } from 'next/router';
+import useOcCart from 'src/hooks/useOcCart';
+import { OrderWithXp, LineItemWithXp, OrderWorksheetWithXP } from 'src/redux/xp';
+import {
+  DiscreteLineItem,
+  FulfillmentType,
+  GTMLabels,
+  GTM_EVENT,
+  errorMessages,
+} from 'src/helpers/Constants';
+import { getGTMSessionStorage, sendProductsPromotion } from 'src/utils/sendGTMEvent';
+import { ProductSearchResultModelWithVariants } from 'src/helpers/search/SearchResults/types';
+import { onSubmitValidateData } from '../helper/preflight';
+import Loader from 'components/Loader/Loader';
+import useDictionary from 'src/hooks/useDictionary';
+import { useCartPriceForUI } from 'src/hooks/useCartPriceForUI';
+import { useCheckoutFormContext } from 'lib/context/CheckoutFormContext';
+import { checkoutAPI } from 'src/utils/nextApiConfig';
+import ErrorLabel from '../ErrorLabel/ErrorLabel';
+import {
+  deleteSubmittingOrder,
+  setSubmittingOrder,
+} from 'components/WarningSubmittingCart/WarningSubmittingCart';
+import { CommerceEntityPayload } from '@sitecore-search/data/dist/esm/events/models/payloads';
+import { trackOrderConfirmEvent } from '@sitecore-search/react';
+import { useHeaderContext } from 'lib/context/HeaderComponentContext';
+
+export type CheckoutPaymentProps = React.InputHTMLAttributes<HTMLInputElement> &
+  ComponentProps & {
+    fields?: {
+      title?: Field<string>;
+      submitButtonText?: Field<string>;
+      successMessage?: Field<string>;
+      successRedirectUrl?: {
+        jsonValue: LinkField;
+      };
+      failureMessage?: Field<string>;
+      errors?: ErrorField;
+    };
+  };
+
+interface ErrorField {
+  values: [];
+}
+
+interface OrderSubmitResponse {
+  worksheet?: OrderWorksheetWithXP;
+  validationResult?: ValidationResult;
+}
+
+interface ValidationResult {
+  Valid: boolean;
+  InventoryErrors?: InventoryError[];
+  OtherErrors?: string[];
+}
+
+interface InventoryError {
+  Data: {
+    LineItemID?: string;
+    ProductID?: string;
+    QuantityAvailable?: number;
+    QuantityRequested?: number;
+  };
+  ErrorCode?: string;
+  Message?: string;
+}
+const CheckoutPayment = ({ fields, rendering }: CheckoutPaymentProps): JSX.Element => {
+  const {
+    base,
+    form,
+    paymentInformationContainer,
+    // defaultTitle,
+    // title,
+    submitBtn,
+    // titleWrapper,
+    loaderWrapper,
+    fieldWrapper,
+  } = CheckoutPaymentVariant({
+    device: {
+      initial: 'mobile',
+      lg: 'desktop',
+    },
+  });
+
+  const router = useRouter();
+  const dispatch = useOcDispatch();
+
+  const {
+    checkoutContextData,
+    updateCheckoutContextData,
+    paymentOpen,
+    expandedStep,
+    activateStep,
+  } = useCheckoutFormContext();
+  const { setHeaderContextData } = useHeaderContext();
+
+  useNavigationPrompt(
+    !!checkoutContextData.checkoutIsSubmitting,
+    'Order is being submitted.  Please wait...'
+  );
+
+  const [loading, setLoading] = useState<boolean>(!!checkoutContextData.checkoutIsSubmitting);
+
+  const collapse = !paymentOpen;
+
+  const [submitValidation, setSubmitValidation] = useState<ValidationResult>();
+  const cart = useOcSelector((state) => state?.ocCurrentOrder?.order);
+  const { getProductLineItems } = useOcCart();
+  const productlineitems = getProductLineItems();
+
+  useEffect(() => {
+    if (document.body.classList.contains('overflow-hidden')) {
+      document.body.classList.remove('overflow-hidden');
+    }
+  }, []);
+
+  const paymentContainer = useRef<HTMLDivElement>(null);
+
+  const adyenCheckout = useCheckout(paymentContainer);
+  const { themeNameUpper } = useTheme();
+  const myStoreData = useOcSelector((state) => state?.storeReducer?.selectedStore);
+  const currentOrder = useOcSelector((state) => state?.ocCurrentOrder);
+
+  const [cookies] = useCookies(['ordercloud.access-token']);
+  const { getDictionaryValue } = useDictionary();
+
+  const hasAutoship =
+    !!currentOrder.order?.xp?.AutoshipFrequency && currentOrder.order.xp.AutoshipFrequency > 0;
+
+  const invokeSubmitOrder = async () => {
+    if (
+      hasAutoship &&
+      cartPricing?.autoshipSubTotal &&
+      myStoreData?.deliveryFee?.minimumAmount &&
+      myStoreData?.deliveryFee?.minimumAmount > cartPricing?.autoshipSubTotal
+    ) {
+      updateCheckoutContextData({ showAutoshipWarning: true });
+      return;
+    }
+    setLoading(true);
+    setSubmitValidation(undefined);
+    const token = cookies['ordercloud.access-token']
+      ? cookies['ordercloud.access-token']
+      : Tokens.GetAccessToken();
+    const submitocorderUrl = checkoutAPI?.submitorder;
+    const isValid = adyenCheckout.validateCheckout();
+    //Commenting as its not part of Sprint4
+    if (!isValid || !cart?.ID) {
+      setLoading(false);
+      return;
+    }
+    /*
+    if (!ocPayment || !ocPayment.length) {
+      const payment: Payment = { ID: cart?.ID ?? '', Type: 'CreditCard' };
+      await dispatch(addPayment(payment));
+    }
+    */
+    try {
+      const preflightResponse = await onSubmitValidateData(currentOrder); // Function to call to check the preflights conditions:
+      if (!preflightResponse) {
+        console.error(
+          'Some required fields is missing on your form data. Kindly revisit them and populate in order to proceed ahead with payment.'
+        );
+        return;
+      }
+
+      updateCheckoutContextData({ checkoutIsSubmitting: true });
+
+      // Submit check out to Adyen
+      const zeroauthResponse = await adyenCheckout.submitCheckout();
+      if (zeroauthResponse?.paymentResponse) {
+        if (zeroauthResponse?.paymentResponse?.resultCode !== 'Authorised') {
+          adyenCheckout.remount();
+          setLoading(false);
+          return;
+        }
+      }
+
+      setSubmittingOrder(cart.ID);
+
+      const headersData = {
+        Authorization: token,
+        site: themeNameUpper,
+      };
+
+      const payload: Record<string, unknown> = {
+        orderId: cart.ID,
+        zeroauthResponse: zeroauthResponse?.paymentResponse,
+        encryptedSecurityCode: zeroauthResponse?.encryptedSecurityCode,
+      };
+
+      if (router.query.debugSlow === 'true') {
+        payload.DebugSimulateSlowProcessing = true;
+      }
+      if (router.query.debugVerySlow === 'true') {
+        payload.DebugSimulateVerySlowProcessing = true;
+      }
+      if (router.query.debugError === 'true') {
+        payload.DebugSimulateErrorResponse = true;
+      }
+
+      const options = { method: 'POST', headers: headersData, data: payload };
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const response: OrderSubmitResponse = await apiRequest<OrderSubmitResponse>(
+        submitocorderUrl,
+        options
+      );
+
+      deleteSubmittingOrder();
+
+      updateCheckoutContextData({ checkoutIsSubmitting: false });
+
+      if (!response?.validationResult?.Valid) {
+        // reading from dictionary and fallback from constant as end users should not be seeing exact error
+        console.warn(response?.validationResult);
+        setSubmitValidation(response?.validationResult);
+      }
+      const storedPaymentMethodId =
+        zeroauthResponse?.paymentResponse?.additionalData?.['recurring.recurringDetailReference'];
+      const shopperReference =
+        zeroauthResponse?.paymentResponse?.additionalData?.['recurring.shopperReference'];
+
+      if (response?.worksheet) {
+        const orderCalculateResponse = response?.worksheet?.OrderCalculateResponse;
+
+        if (!zeroauthResponse?.storePaymentMethod && storedPaymentMethodId && shopperReference) {
+          await AdyenClientApiWrapper.deleteStoredPaymentMethod(
+            storedPaymentMethodId,
+            shopperReference,
+            cart?.ID ?? '',
+            cart?.FromUser?.xp?.PPC ?? '',
+            cart?.FromUser?.Email ?? ''
+          );
+        }
+
+        await dispatch(setRecentPlacedOrder(response?.worksheet));
+        if (response?.worksheet?.Order?.ID && orderCalculateResponse?.Succeeded === true) {
+          const orderConfirmItems: CommerceEntityPayload[] = [];
+          const orderData = currentOrder?.lineItems
+            ? currentOrder?.lineItems?.filter(
+                (product) => product?.ProductID !== DiscreteLineItem.TIP
+              )
+            : currentOrder?.recentOrders?.[0]?.lineItems?.filter(
+                (product) => product?.ProductID !== DiscreteLineItem.TIP
+              );
+          const orderedProductIds = orderData?.map((product) => {
+            return {
+              id: product?.Product?.ID || '',
+              ListPrice: product?.xp?.ListPrice || 0,
+              Quantity: product?.Quantity || 0,
+              LineTotal: product?.LineTotal || 0,
+            };
+          });
+          const order = currentOrder?.order || currentOrder?.recentOrders?.[0]?.order;
+
+          if (orderedProductIds && orderedProductIds?.length > 0) {
+            orderedProductIds.forEach((op) => {
+              const price = op?.ListPrice / op?.Quantity;
+              const finalPrice = op?.LineTotal / op?.Quantity;
+              const opItem = {
+                entityType: 'product',
+                id: op?.id,
+                price: price,
+                finalPrice: finalPrice,
+                quantity: op?.Quantity,
+              };
+              orderConfirmItems.push(opItem);
+            });
+          }
+
+          orderConfirmItems &&
+            trackOrderConfirmEvent('product', {
+              items: orderConfirmItems,
+              orderSubtotal: order?.Subtotal,
+              orderId: response?.worksheet?.Order?.xp?.OrderId as string,
+              orderTotal: order?.Total,
+              actionSubtype: 'conversion',
+            });
+          const orderNumber = response?.worksheet?.Order?.xp?.OrderId;
+          const redirectUrl =
+            fields?.successRedirectUrl?.jsonValue?.value?.href ??
+            `/checkout/orderconfirmation?id=${orderNumber}`;
+          setHeaderContextData((headerContextData) => ({
+            ...headerContextData,
+            isRedirectToOrderConfirmation: true,
+          }));
+          router.push(redirectUrl);
+        }
+      } else {
+        //delete card if it is not using stored payment and faced an error scenario:
+        if (storedPaymentMethodId && shopperReference && !zeroauthResponse?.storePaymentMethod) {
+          await AdyenClientApiWrapper.deleteStoredPaymentMethod(
+            storedPaymentMethodId,
+            shopperReference,
+            cart?.ID ?? '',
+            cart?.FromUser?.xp?.PPC ?? '',
+            cart?.FromUser?.Email ?? ''
+          );
+        }
+      }
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (err: any) {
+      //console.error('OrderSubmit Respose', err);
+      // reading from dictionary and fallback from constant as end users should not be seeing exact error
+      console.warn(err.message);
+      setSubmitValidation({
+        Valid: false,
+        OtherErrors: [
+          getDictionaryValue('GenericPaymentError') ?? errorMessages?.genericPaymentError,
+        ],
+      });
+    } finally {
+      setLoading(false);
+      deleteSubmittingOrder();
+      updateCheckoutContextData({ checkoutIsSubmitting: false });
+    }
+
+    // TODO: Should be redirected to the '/checkout/orderconfirmation' page
+  };
+
+  //GTM data layer integration
+  const pickup: boolean = cart?.xp?.Fulfillment === FulfillmentType.BOPIS;
+
+  const { position } = getGTMSessionStorage();
+  const cartPricing = useCartPriceForUI(currentOrder);
+
+  const productData = productlineitems?.map((lineItem) => {
+    const products = {
+      ...lineItem?.Product,
+      quantity: lineItem?.Quantity,
+      BasePrice: lineItem?.UnitPrice,
+      listPrice: lineItem?.UnitPrice,
+    };
+    return products;
+  });
+
+  // Update Checkout Error on basis of 'submitorder' API response.
+  useEffect(() => {
+    if (submitValidation?.OtherErrors) {
+      updateCheckoutContextData({ CheckoutError: 'unknown' });
+      // Transition from down to top:
+      activateStep('paymentError');
+    }
+  }, [submitValidation]);
+
+  useEffect(() => {
+    const checkGtmLoad = () => {
+      const isBeginCheckoutFired =
+        window &&
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (window as any)['dataLayer']?.filter((val: any) => val?.event === GTM_EVENT?.beginCheckout)
+          ?.length > 0;
+
+      const isShippingFired =
+        window &&
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (window as any)['dataLayer']?.filter((val: any) => val?.event === GTM_EVENT?.beginCheckout)
+          ?.length > 0;
+
+      const isGTMLoad =
+        //eslint-disable-next-line @typescript-eslint/no-explicit-any
+        typeof window !== 'undefined' && (window as any)['google_tag_manager']?.dataLayer?.gtmLoad;
+
+      if (
+        isBeginCheckoutFired &&
+        isShippingFired &&
+        !collapse &&
+        productData &&
+        isGTMLoad &&
+        expandedStep === 'none'
+      ) {
+        sendProductsPromotion({
+          eventName: GTM_EVENT?.addPaymentInfo,
+          data: productData as ProductSearchResultModelWithVariants[],
+          position: position ?? 0,
+          storeId: myStoreData?.storeId,
+          currency: true,
+          ShippingTier: !pickup ? GTMLabels?.firstTime : GTMLabels?.pickup,
+          totalCount: Number(cartPricing?.subTotal),
+          fulfillment_option: !pickup ? GTMLabels?.DFS : GTMLabels?.BOPIS,
+        });
+      } else {
+        setTimeout(() => {
+          checkGtmLoad();
+        }, 1000);
+      }
+    };
+
+    !collapse && productData && checkGtmLoad();
+  }, [pickup, collapse, expandedStep]);
+
+  if (!myStoreData || Object.keys(myStoreData).length === 0 || !cart) {
+    return (
+      <div className="checkoutpayment" hidden>
+        {cart?.xp?.Fulfillment}
+      </div>
+    );
+  }
+  return (
+    <>
+      {!collapse && (
+        <div id="checkoutpayment" className={clsx('checkoutpayment', base({ active: collapse }))}>
+          {/* <div className={titleWrapper()}>
+          <Text
+            field={
+              fields?.title || {
+                value: pickup ? '3. Payment Information' : '4. Payment Information',
+              }
+            }
+            className={clsx(collapse ? defaultTitle() : title())}
+            tag="p"
+          />
+        </div> */}
+          <Placeholder name="checkout-before-payment" rendering={rendering} />
+          <div
+            className={clsx(paymentInformationContainer(), { hidden: collapse, block: !collapse })}
+          >
+            <div className={form()}>
+              <div className={styles.paymentContainer}>
+                {adyenCheckout.loadingPaymentForm ? <Loader /> : null}
+                <div ref={paymentContainer} className="payment"></div>
+              </div>
+              <div className={fieldWrapper()}>
+                {/* Submit Button */}
+                {loading ? (
+                  <div className={loaderWrapper()}>
+                    <Loader />
+                    <p>{getDictionaryValue('placingOrder')}</p>
+                  </div>
+                ) : (
+                  <>
+                    <button
+                      aria-label="submit"
+                      className={submitBtn()}
+                      type="submit"
+                      onClick={invokeSubmitOrder}
+                    >
+                      {fields?.submitButtonText?.value || 'Place Order'}
+                    </button>
+                    {/* Earlier version used to show error */}
+                    {/* {error ? <p className="mt-4 text-color-accent-red">{error}</p> : <></>} */}
+                    {/* After implementing CVV decline change  */}
+                    {checkoutContextData?.CheckoutError !== undefined ? (
+                      // TODO: for now duplicating code for showing Inventory Error:
+                      submitValidation?.InventoryErrors ? (
+                        submitValidation?.InventoryErrors?.map((err) => {
+                          const line = productlineitems.find((x) => x.ID === err.Data.LineItemID);
+                          return (
+                            <p
+                              key={err.Data.LineItemID}
+                              className="text-system-red font-medium"
+                            >{`Insufficent inventory for ${line?.Product?.Name}`}</p>
+                          );
+                        })
+                      ) : (
+                        <></>
+                      )
+                    ) : submitValidation?.Valid ? (
+                      <></>
+                    ) : (
+                      <div className="mt-4 text-color-accent-red">
+                        {submitValidation?.InventoryErrors?.map((err) => {
+                          const line = productlineitems.find((x) => x.ID === err.Data.LineItemID);
+                          return (
+                            <p
+                              key={err.Data.LineItemID}
+                            >{`Insufficent inventory for ${line?.Product?.Name}`}</p>
+                          );
+                        })}
+                        {submitValidation?.OtherErrors?.map((err, index) => {
+                          return <p key={err + index}>{err}</p>;
+                        })}
+                      </div>
+                    )}
+                  </>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+  );
+};
+export default CheckoutPayment;
+
+const useNavigationPrompt = (isBlocked: boolean, message: string) => {
+  const router = useRouter();
+
+  const beforeHistoryChange = useCallback(() => {
+    if (isBlocked) {
+      window.alert(message);
+      // throwing error prevent next router change
+      throw 'Route change aborted.';
+    }
+  }, [isBlocked, message]);
+
+  // Block next routes
+  useEffect(() => {
+    router.events.on('beforeHistoryChange', beforeHistoryChange);
+
+    return () => {
+      router.events.off('beforeHistoryChange', beforeHistoryChange);
+    };
+  }, [beforeHistoryChange, router.events]);
+
+  const unload = useCallback(
+    (event: { preventDefault: () => void; returnValue?: string }) => {
+      if (isBlocked) {
+        event.preventDefault(); // required for mozilla
+
+        event.returnValue = ''; // required for chrome
+      }
+    },
+    [isBlocked]
+  );
+
+  // Block non-next routes
+  useEffect(() => {
+    window.addEventListener('beforeunload', unload);
+
+    return () => {
+      window.removeEventListener('beforeunload', unload);
+    };
+  }, [unload]);
+
+  return null;
+};
+
+type SubmitPaymentPromise = {
+  promise?: Promise<ZeroAuthResponse>;
+  resolve?: (value: ZeroAuthResponse) => void;
+  reject?: (reason?: unknown) => void;
+};
+
+const useCheckout = (paymentContainer: RefObject<HTMLDivElement>) => {
+  const checkoutComponent = useRef<DropinElement>();
+  const myStoreData = useOcSelector((state) => state?.storeReducer?.selectedStore);
+  const { order, lineItems } = useOcCurrentOrder();
+
+  const [loadingPaymentForm, setLoadingPaymentForm] = useState(false);
+  // We need a useRef here because we don't reinitialize the payment component
+  // so it can be holding on to an older copy of order because it's not a native React component
+  const orderRef = useRef<OrderWithXp>();
+  orderRef.current = order;
+  const lineRef = useRef<LineItemWithXp[]>();
+  lineRef.current = lineItems;
+
+  const auth = useOcAuth();
+  const { checkoutContextData, updateCheckoutContextData, activateStep, paymentOpen } =
+    useCheckoutFormContext();
+
+  // TODO ensure data is coming from store
+  const adyenClientKey =
+    (myStoreData?.clientKey as string) ?? 'test_WIVENFRNNRBUDFJFGT7GO65WWYWSD4HO';
+  function validateCheckout() {
+    checkoutComponent.current?.showValidation();
+
+    const isValid = checkoutComponent.current?.isValid;
+
+    return isValid;
+  }
+
+  function remount() {
+    checkoutComponent.current?.update({});
+  }
+
+  // Get the order from ref because otherwise in a callback scenario
+  // it can have a cached copy of the value rather than the latest current value
+  function getIsAutoship() {
+    const orderFromRef = orderRef.current ?? order;
+    return !!orderFromRef?.xp?.AutoshipFrequency && orderFromRef.xp.AutoshipFrequency > 0;
+  }
+  const isAutoship = getIsAutoship();
+
+  // Keep previous state in a useRef.  Because we don't need
+  // to watch for changes and this is based off DOM elements
+  // we are using a useRef instead of useState
+  const storePaymentCheckboxOriginalStateRef = useRef(false);
+  // Checkbox for whether to save payment method
+  const storePaymentCheckboxRef = useRef<HTMLInputElement>();
+  // If order is autoship, ensure that the store payment method checkbox is checked
+  // and disable to prevent unchecking
+  useEffect(() => {
+    const elem = storePaymentCheckboxRef.current;
+    if (elem) {
+      if (isAutoship) {
+        storePaymentCheckboxOriginalStateRef.current = elem.checked;
+        elem.checked = true;
+        elem.disabled = true;
+      } else {
+        elem.checked = storePaymentCheckboxOriginalStateRef.current;
+        elem.disabled = false;
+      }
+    }
+  }, [isAutoship]);
+
+  const [submitPromise, setPromise] = useState<SubmitPaymentPromise>();
+
+  const resetPromise = useCallback(() => {
+    if (!submitPromise) {
+      return;
+    }
+    // Promise to return on submit
+    const promise = new Promise<ZeroAuthResponse>((resolve, reject) => {
+      submitPromise.resolve = resolve;
+      submitPromise.reject = reject;
+    });
+    submitPromise.promise = promise;
+  }, [submitPromise]);
+
+  useEffect(() => {
+    if (!submitPromise) {
+      const newSubmitPromise: SubmitPaymentPromise = {};
+      // Promise to return on submit
+      const promise = new Promise<ZeroAuthResponse>((resolve, reject) => {
+        newSubmitPromise.resolve = resolve;
+        newSubmitPromise.reject = reject;
+      });
+      newSubmitPromise.promise = promise;
+      setPromise(newSubmitPromise);
+      resetPromise();
+    }
+  }, [resetPromise, submitPromise]);
+
+  async function submitCheckout() {
+    checkoutComponent.current?.submit();
+    return await submitPromise?.promise;
+  }
+  function GetPhoneNumber(order: OrderWithXp | undefined, lineItem: LineItemWithXp | undefined) {
+    let phone = '';
+
+    const delivery: boolean = order?.xp?.Fulfillment === FulfillmentType.DFS;
+    if (delivery) {
+      phone = lineItem?.ShippingAddress?.Phone ?? '';
+    } else {
+      phone = order?.xp?.PickupInfo?.PhoneNumber ?? '';
+    }
+
+    if (phone.trim().length == 0) {
+      phone = order?.FromUser?.Phone ?? '';
+    }
+    if (phone.trim().length == 0) {
+      phone = order?.FromUser?.xp?.HomePhone ?? '';
+    }
+    return phone;
+  }
+  const user = order?.FromUser;
+  const billingAddress = order?.BillingAddress;
+  const deliveryAddress = lineItems?.[0]?.ShippingAddress;
+  const dfs: boolean = order?.xp?.Fulfillment === FulfillmentType.DFS;
+  const phone: string = GetPhoneNumber(order, lineItems?.[0]);
+  const amount = useMemo(
+    () => ({
+      currency: 'USD',
+      // Value needs to be in cents
+      // value: (order?.Total ?? 0) * 100,
+      value: 0,
+    }),
+    []
+  );
+
+  const fulfillment = useMemo(
+    () => ({
+      isDelivery: dfs,
+    }),
+    [dfs]
+  );
+  const shopperData = useMemo(
+    () =>
+      auth.isAnonymous || !user?.ID
+        ? {
+            shopperReference: nanoid(),
+            shopperName: `${billingAddress?.FirstName} ${billingAddress?.LastName}`.trim(),
+            telephoneNumber: phone,
+            shopperEmail: '',
+          }
+        : {
+            shopperReference: user?.xp?.AdyenShopperReference ?? nanoid(),
+            shopperName: `${user.FirstName} ${user.LastName}`.trim(),
+            telephoneNumber: phone,
+            shopperEmail: user.Email,
+          },
+    [
+      auth.isAnonymous,
+      billingAddress?.FirstName,
+      billingAddress?.LastName,
+      user?.Email,
+      user?.FirstName,
+      user?.ID,
+      user?.LastName,
+    ]
+  );
+
+  const billing: BillingAddress = useMemo(
+    () => ({
+      street: billingAddress?.Street1 ?? '',
+      // Checked against their OOTB implementation.  For US-based address this part is the "Apartment / Suite (optional)" field.
+      houseNumberOrName: billingAddress?.Street2 ?? '',
+      city: billingAddress?.City ?? '',
+      postalCode: billingAddress?.Zip ?? '',
+      stateOrProvince: billingAddress?.State ?? '',
+      country: billingAddress?.Country ?? '',
+    }),
+    [
+      billingAddress?.City,
+      billingAddress?.Country,
+      billingAddress?.State,
+      billingAddress?.Street1,
+      billingAddress?.Street2,
+      billingAddress?.Zip,
+    ]
+  );
+  const delivery: DeliveryAddress = useMemo(
+    () => ({
+      street: deliveryAddress?.Street1 ?? '',
+      houseNumberOrName: deliveryAddress?.Street2 ?? '',
+      city: deliveryAddress?.City ?? '',
+      postalCode: deliveryAddress?.Zip ?? '',
+      stateOrProvince: deliveryAddress?.State ?? '',
+      country: deliveryAddress?.Country ?? '',
+    }),
+    [
+      deliveryAddress?.City,
+      deliveryAddress?.Country,
+      deliveryAddress?.State,
+      deliveryAddress?.Street1,
+      deliveryAddress?.Street2,
+      deliveryAddress?.Zip,
+    ]
+  );
+
+  const additionalData: AdditionalData = useMemo(
+    () => ({
+      'enhancedSchemeData.shipFromPostalCode': lineItems?.[0]?.ShipFromAddress?.Zip ?? '',
+      subMerchantCity: lineItems?.[0]?.ShipFromAddress?.City ?? '',
+      subMerchantCountry: lineItems?.[0]?.ShipFromAddress?.Country ?? '',
+      subMerchantID: order?.ToCompanyID ?? '',
+      subMerchantName: lineItems?.[0]?.ShipFromAddress?.FirstName ?? '',
+      subMerchantPhoneNumber: lineItems?.[0]?.ShipFromAddress?.Phone ?? '',
+      subMerchantPostalCode: lineItems?.[0]?.ShipFromAddress?.Zip ?? '',
+      subMerchantState: lineItems?.[0]?.ShipFromAddress?.State ?? '',
+      subMerchantStreet: lineItems?.[0]?.ShipFromAddress?.Street1 ?? '',
+    }),
+    [lineItems?.[0]?.ShipFromAddress]
+  );
+  const paymentMethodsPromise = useMemo(
+    () =>
+      AdyenClientApiWrapper.getPaymentMethods(
+        myStoreData.storeId,
+        'en-US',
+        amount,
+        shopperData.shopperReference
+      ),
+    [amount, myStoreData.storeId, shopperData.shopperReference]
+  );
+  interface AdditionalData {
+    [key: string]: string;
+  }
+  type CheckoutData = {
+    merchantReference?: string;
+    shopperData?: typeof shopperData;
+    billingAddress?: BillingAddress;
+    deliveryAddress?: DeliveryAddress;
+    additionalData?: AdditionalData;
+    isAnonymous: boolean;
+    isDelivery: boolean;
+  };
+  // We need to use a ref here, otherwise due to the closure it will submit with old
+  // values instead of current values
+  const checkoutDataRef = useRef<CheckoutData>({
+    merchantReference: order?.ID,
+    shopperData,
+    billingAddress: billing,
+    deliveryAddress: delivery,
+    additionalData: additionalData,
+    isAnonymous: auth.isAnonymous,
+    isDelivery: fulfillment.isDelivery,
+  });
+  const cart = useOcSelector((state) => state?.ocCurrentOrder?.order);
+  useEffect(() => {
+    let ignore = false;
+
+    // Update the values, since we're not re-createing the checkout
+    // updating the ref will ensure the current values are used
+    checkoutDataRef.current.merchantReference = order?.ID;
+    checkoutDataRef.current.shopperData = shopperData;
+    checkoutDataRef.current.billingAddress = billing;
+    checkoutDataRef.current.deliveryAddress = delivery;
+    checkoutDataRef.current.isAnonymous = auth.isAnonymous;
+    checkoutDataRef.current.isDelivery = fulfillment.isDelivery;
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const createCheckout = async (cart: any) => {
+      const translations = {
+        'en-US': {
+          'creditCard.cvcField.title': 'CVC/CVV',
+          storeDetails: 'Save Credit Card for Future Use',
+        },
+      };
+      const paymentMethodsResponse = await paymentMethodsPromise;
+
+      // Hotfix for Filtering out payment methods of type 'giftcard' for removal
+      if (
+        !process.env.NEXT_PUBLIC_ADYEN_ENABLE_GIFTCARD ||
+        process.env.NEXT_PUBLIC_ADYEN_ENABLE_GIFTCARD === 'false'
+      ) {
+        if (paymentMethodsResponse?.paymentMethods?.length) {
+          paymentMethodsResponse.paymentMethods = paymentMethodsResponse.paymentMethods.filter(
+            (method) => method.type !== 'giftcard'
+          );
+        }
+      }
+
+      const checkout = await AdyenCheckout({
+        paymentMethodsResponse,
+        locale: 'en-US',
+        translations,
+        environment: process.env.NEXT_PUBLIC_ADYEN_ENVIRONMENT?.toLocaleLowerCase() ?? 'test',
+        showPayButton: false,
+        clientKey: adyenClientKey,
+
+        paymentMethodsConfiguration: {
+          card: {
+            showStoredPaymentMethods: !checkoutDataRef.current.isAnonymous,
+            enableStoreDetails: !checkoutDataRef.current.isAnonymous,
+
+            // Called when Card UI is loaded
+            onConfigSuccess: (e) => {
+              // Find the checkbox and store it in ref
+              const elem = e.rootNode.querySelector<HTMLInputElement>('[name="storeDetails"]');
+              storePaymentCheckboxRef.current = elem ?? undefined;
+
+              // Get latest value
+              const isAutoship = getIsAutoship();
+              if (elem) {
+                // Create a span for a label.  We'll toggle visibility in CSS
+                // based on whether the checkbox is disabled
+                const label = elem.nextElementSibling;
+                const span = document.createElement('span');
+                span.className = 'store-card-autoship-message text-gray-400';
+                span.innerText = ' (Autoship orders must save card)';
+                label?.appendChild(span);
+
+                if (isAutoship) {
+                  elem.checked = true;
+                  elem.disabled = true;
+                }
+              }
+            },
+            // This is commented out because
+            // it will add a billing address section to the Adyen UI.
+            // billingAddressRequired: true,
+          },
+        },
+
+        onSubmit: (state, component) => {
+          if (state.isValid) {
+            const data = {
+              ...state.data,
+              ...checkoutDataRef.current.shopperData,
+              billingAddress: checkoutDataRef.current.billingAddress,
+              deliveryAddress: checkoutDataRef.current.isDelivery
+                ? checkoutDataRef.current.deliveryAddress
+                : undefined,
+              additionalData: checkoutDataRef.current.additionalData,
+              merchantReference: checkoutDataRef.current.merchantReference,
+            };
+
+            // Get the order from the ref to ensure it is the most current copy
+            const isAutoship = getIsAutoship();
+
+            // Always store for autoship
+            if (isAutoship) {
+              data.storePaymentMethod = true;
+            }
+            component.setStatus('loading');
+            AdyenClientApiWrapper.initiatePayment(data, amount, isAutoship)
+              .then((data) => {
+                //handleServerResponse(data, component);//Instead of showing payment success on Zero auth, its will be good to show success on full auth.
+
+                if (data.paymentResponse.resultCode === 'Authorised') {
+                  submitPromise?.resolve && submitPromise.resolve(data);
+
+                  component.setStatus('success');
+                } else {
+                  if (
+                    data.paymentResponse.refusalReasonCode === '22' &&
+                    data.paymentResponse.additionalData?.avsResultRaw !== '7'
+                  ) {
+                    updateCheckoutContextData({ CheckoutError: 'avs' });
+                  }
+                  // used for CVC Declined
+                  else if (data?.paymentResponse?.refusalReasonCode === '24') {
+                    updateCheckoutContextData({ CheckoutError: 'cvv' });
+                  } else {
+                    updateCheckoutContextData({ CheckoutError: 'unknown' });
+                  }
+                  // Transition from down to top:
+                  activateStep('paymentError');
+
+                  submitPromise?.reject && submitPromise.reject({ message: 'Payment Error' });
+                }
+                resetPromise();
+              })
+              .catch((e) => {
+                submitPromise?.reject && submitPromise.reject(e);
+                resetPromise();
+              })
+              .finally(() => {
+                component.setStatus('ready');
+              });
+          } else {
+            submitPromise?.reject && submitPromise.reject(state);
+            resetPromise();
+            component.setStatus('ready');
+          }
+        },
+        // TODO figure out if we need this
+        onAdditionalDetails: (state, component) => {
+          console.info('onAdditionalDetails ', state, component);
+        },
+
+        // TODO figure out if we need this, doesn't appear to ever be called.
+        onPaymentCompleted: (data) => {
+          console.log('Success: ' + data.resultCode);
+        },
+        // TODO figure out when this is called, do better handling
+        onError: (error) => {
+          console.error(error);
+
+          // alert('an error occurred: ' + error);
+        },
+      });
+
+      // The 'ignore' flag is used to avoid double re-rendering caused by React 18 StrictMode
+      // More about it here: https://beta.reactjs.org/learn/synchronizing-with-effects#fetching-data
+      if (paymentContainer.current && !ignore) {
+        const dropinUI = checkout
+          .create('dropin', {
+            showRemovePaymentMethodButton: true,
+            onDisableStoredPaymentMethod: (
+              storedPaymentMethodId: string,
+              resolve: (typeof Promise)['resolve'],
+              reject: (typeof Promise)['reject']
+            ) => {
+              AdyenClientApiWrapper.deleteStoredPaymentMethod(
+                storedPaymentMethodId,
+                shopperData.shopperReference,
+                cart?.ID ?? '',
+                cart?.FromUser?.xp?.PPC ?? '',
+                cart?.FromUser?.Email ?? ''
+              )
+                .then(resolve)
+                .catch(reject)
+                .then(() => {
+                  // TODO trigger click even for Cards so it auto expands.
+                  console.info('payment method deleted');
+                });
+            },
+          })
+          .mount(paymentContainer.current);
+        setLoadingPaymentForm(false);
+
+        checkoutComponent.current = dropinUI;
+      }
+    };
+
+    /**
+     * While initiating the payment drop-in only when the active form
+     *  is set to Payment, significantly reduces the unwanted number of calls
+     */
+    if (paymentOpen) {
+      // It's already been created, but in some scenarios it gets unmounted
+      // Remount it to make sure it's present.
+      if (
+        checkoutComponent.current &&
+        paymentContainer.current &&
+        !paymentContainer.current.children.length
+      ) {
+        checkoutComponent.current.mount(paymentContainer.current);
+      } else {
+        setLoadingPaymentForm(true);
+        createCheckout(cart);
+      }
+    }
+
+    return () => {
+      ignore = true;
+    };
+  }, [
+    adyenClientKey,
+    amount,
+    billing,
+    shopperData,
+    orderRef.current,
+    paymentContainer,
+    submitPromise,
+    paymentOpen,
+    checkoutContextData?.CheckoutError,
+  ]);
+
+  return {
+    submitCheckout,
+    validateCheckout,
+    remount,
+    loadingPaymentForm,
+  };
+};
+
+export function PaymentErrorLabel() {
+  const { checkoutContextData } = useCheckoutFormContext();
+
+  if (!checkoutContextData.CheckoutError) {
+    return <></>;
+  }
+
+  switch (checkoutContextData.CheckoutError) {
+    case 'cvv':
+      console.error('Payment Warning:', errorMessages.invalidCVV);
+      return <ErrorLabel errorMessage={'GenericPaymentFailure'} isDictionaryKey />;
+    case 'avs':
+      console.error('Payment Warning:', errorMessages.invalidBillingAddress);
+      return <ErrorLabel errorMessage={'GenericPaymentFailure'} isDictionaryKey />;
+    case 'unknown':
+    default:
+      return <ErrorLabel errorMessage={'GenericPaymentError'} isDictionaryKey />;
+  }
+}
+
+
+
+import PaymentMethodsResponse from '@adyen/adyen-web/dist/types/core/ProcessResponse/PaymentMethodsResponse';
+import { Amount } from '@adyen/api-library/lib/src/typings/amount';
+import { PaymentResult } from '@adyen/api-library/lib/src/typings/payment/paymentResult';
+import axios from 'axios';
+
+export const AdyenClientApiWrapper = {
+  deleteStoredPaymentMethod,
+  getPaymentMethods,
+  handleShopperRedirect,
+  initiatePayment,
+  submitOrder,
+};
+
+async function deleteStoredPaymentMethod(
+  storedPaymentMethodId: string,
+  shopperReference: string,
+  orderId: string,
+  ppc: string,
+  userEmail: string
+) {
+  const storeId = localStorage.getItem('storeId') ?? '';
+  const params = new URLSearchParams({
+    storedPaymentMethodId,
+    storeId,
+    shopperReference,
+    orderId,
+    ppc,
+    userEmail,
+  });
+  const paramsString = params ? '?' + params : '';
+  console.log('$$$ deleteStoredPaymentMethod: Payload: ', paramsString);
+  const response = await fetch('/api/adyen/deleteStoredPaymentMethod' + paramsString);
+
+  return response.status >= 200 && response.status < 300 ? true : await response.json();
+}
+
+async function getPaymentMethods(
+  storeId: string,
+  locale: string,
+  amount: Amount,
+  shopperReference?: string
+) {
+  if (typeof window === 'undefined') {
+    return;
+  }
+  const params = new URLSearchParams({
+    locale,
+    storeId,
+    amountValue: amount?.value.toString(),
+    shopperReference: shopperReference ?? '',
+  });
+  const paramsString = params ? '?' + params : '';
+  const response = await fetch('/api/adyen/getPaymentMethods' + paramsString);
+  return (await response.json()) as PaymentMethodsResponse;
+}
+
+async function handleShopperRedirect(redirectResult: string, payload: string) {
+  const params = new URLSearchParams({
+    redirectResult,
+    payload,
+  });
+  const paramsString = params ? '?' + params : '';
+  const response = await fetch('/api/adyen/handleShopperRedirect' + paramsString);
+  // TODO
+  return (await response.json()) as PaymentMethodsResponse;
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+async function initiatePayment(data: any, amount: Amount, isAutoship: boolean) {
+  const storeId = localStorage.getItem('storeId');
+  const response = await axios.post<PaymentResult>('/api/adyen/initiatePayment', {
+    ...data,
+    amount,
+    storeId,
+    isAutoship,
+  });
+  /*
+  if (response?.data?.resultCode == 'Authorised') {
+    const payment: PartialDeep<Payment> = {
+      ID: data?.merchantReference,
+      //  Accepted: true,//set this in backend
+      // Type: 'CreditCard',
+      xp: {
+        ZeroAuth: response?.data,
+        EncryptedSecurityCode: data?.paymentMethod.encryptedSecurityCode,
+      },
+    };
+    await Payments.Patch('All', data?.merchantReference, data?.merchantReference, payment);
+  }
+  */
+  const result: ZeroAuthResponse = {
+    encryptedSecurityCode: data?.paymentMethod.encryptedSecurityCode,
+    storePaymentMethod:
+      (data?.storePaymentMethod || data?.paymentMethod?.storedPaymentMethodId || isAutoship) ??
+      false,
+    paymentResponse: response.data,
+  };
+  return result; //response.data;
+}
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+async function submitOrder(data: any, orderid: string) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const response = await axios.post<any>('middleware', {
+    ...data,
+    orderid,
+  });
+  return response;
+}
+export interface ZeroAuthResponse {
+  encryptedSecurityCode: string;
+  storePaymentMethod: boolean;
+  paymentResponse: PaymentResult & {
+    refusalReasonCode?: string;
+  };
+}
+
+
+
+'use strict';
+
+import transformData from './transformData.js';
+import isCancel from '../cancel/isCancel.js';
+import defaults from '../defaults/index.js';
+import CanceledError from '../cancel/CanceledError.js';
+import AxiosHeaders from '../core/AxiosHeaders.js';
+import adapters from "../adapters/adapters.js";
+
+/**
+ * Throws a `CanceledError` if cancellation has been requested.
+ *
+ * @param {Object} config The config that is to be used for the request
+ *
+ * @returns {void}
+ */
+function throwIfCancellationRequested(config) {
+  if (config.cancelToken) {
+    config.cancelToken.throwIfRequested();
+  }
+
+  if (config.signal && config.signal.aborted) {
+    throw new CanceledError(null, config);
+  }
+}
+
+/**
+ * Dispatch a request to the server using the configured adapter.
+ *
+ * @param {object} config The config that is to be used for the request
+ *
+ * @returns {Promise} The Promise to be fulfilled
+ */
+export default function dispatchRequest(config) {
+  throwIfCancellationRequested(config);
+
+  config.headers = AxiosHeaders.from(config.headers);
+
+  // Transform request data
+  config.data = transformData.call(
+    config,
+    config.transformRequest
+  );
+
+  if (['post', 'put', 'patch'].indexOf(config.method) !== -1) {
+    config.headers.setContentType('application/x-www-form-urlencoded', false);
+  }
+
+  const adapter = adapters.getAdapter(config.adapter || defaults.adapter);
+
+  return adapter(config).then(function onAdapterResolution(response) {
+    throwIfCancellationRequested(config);
+
+    // Transform response data
+    response.data = transformData.call(
+      config,
+      config.transformResponse,
+      response
+    );
+
+    response.headers = AxiosHeaders.from(response.headers);
+
+    return response;
+  }, function onAdapterRejection(reason) {
+    if (!isCancel(reason)) {
+      throwIfCancellationRequested(config);
+
+      // Transform response data
+      if (reason && reason.response) {
+        reason.response.data = transformData.call(
+          config,
+          config.transformResponse,
+          reason.response
+        );
+        reason.response.headers = AxiosHeaders.from(reason.response.headers);
+      }
+    }
+
+    return Promise.reject(reason);
+  });
+}
+
+
+
