@@ -8824,3 +8824,11 @@
                     body.appendChild(errorInput);
                 }
             }, 5000);
+
+            // Señal de que Adyen API está lista
+            if (window.adyen && window.adyen.key && window.adyen.generationTime) {
+                console.log("adyenApi.js: Adyen key and generationTime are set. Dispatching adyenApiReady event.");
+                document.dispatchEvent(new CustomEvent('adyenApiReady'));
+            } else {
+                console.error("adyenApi.js: Adyen key or generationTime not set after script execution. Cannot dispatch adyenApiReady event.");
+            }

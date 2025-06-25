@@ -51,6 +51,51 @@ async function handleFallbackPayment() {
     const responseArea = document.getElementById('fallback-response-area');
     responseArea.innerHTML = 'Procesando...';
 
+    // Esperar el evento adyenApiReady antes de continuar
+    if (!window.adyen || !window.adyen.key || !window.adyen.generationTime) {
+        console.log("handleFallbackPayment: Adyen API not ready yet. Waiting for adyenApiReady event...");
+        responseArea.innerHTML = 'Esperando inicialización de Adyen...';
+
+        // Intentar de nuevo después de que el evento se dispare
+        document.addEventListener('adyenApiReady', function onAdyenReady() {
+            console.log("handleFallbackPayment: adyenApiReady event received. Proceeding with payment.");
+            document.removeEventListener('adyenApiReady', onAdyenReady); // Limpiar el listener
+            // Llamar a una subfunción para evitar la recursión compleja o problemas de scope del evento
+            proceedWithEncryptionAndPayment();
+        }, { once: true }); // { once: true } para que el listener se auto-elimine
+
+        // Opcional: Timeout para evitar espera indefinida si el evento no llega
+        setTimeout(() => {
+            if (!window.adyen || !window.adyen.key || !window.adyen.generationTime) {
+                // Si después de un tiempo sigue sin estar listo y el evento no se disparó (o no se capturó)
+                // es posible que el listener ya se haya removido por {once: true} si el evento sí ocurrió
+                // pero la función principal ya había terminado.
+                // Para ser más robustos, verificamos de nuevo.
+                const adyenState = window.adyen || {};
+                if (!adyenState.key || !adyenState.generationTime) {
+                     console.error("handleFallbackPayment: Timeout. Adyen API did not become ready.");
+                     responseArea.innerHTML = 'Error: Timeout esperando la API de Adyen.';
+                } else if (responseArea.innerHTML === 'Esperando inicialización de Adyen...') {
+                    // Si está listo pero el mensaje sigue siendo "esperando", significa que el evento
+                    // se disparó pero esta lógica de timeout fue más rápida.
+                    console.log("handleFallbackPayment: Timeout check found Adyen ready. Proceeding.");
+                    proceedWithEncryptionAndPayment();
+                }
+            }
+        }, 3000); // Esperar 3 segundos
+
+        return; // Salir de la función y esperar el evento o el timeout
+    }
+
+    // Si ya está listo (p.ej. el usuario hace clic después de que todo cargó), proceder directamente.
+    proceedWithEncryptionAndPayment();
+}
+
+async function proceedWithEncryptionAndPayment() {
+    const responseArea = document.getElementById('fallback-response-area'); // Re-obtener por si acaso
+    responseArea.innerHTML = 'Procesando (después de verificar Adyen)...';
+
+
     const cardNumber = document.getElementById('fallback-card-number').value;
     const expiryMonth = document.getElementById('fallback-expiry-month').value;
     let expiryYear = document.getElementById('fallback-expiry-year').value;
